@@ -33,7 +33,7 @@ namespace EasyMicroservices.SMS.Providers
         {
             return ExceptionHelper.ExceptionHandler(async () =>
             {
-                multipleTextMessageRequest.ThrowIfNull();
+                multipleTextMessageRequest.ThrowIfNull(nameof(multipleTextMessageRequest));
                 return ((MessageResponse)true).ToMultipleTextMessageResponse(await ApiSendAsync(multipleTextMessageRequest));
             }, (ex) => ((MessageResponse)ex).ToMultipleTextMessageResponse());
         }
