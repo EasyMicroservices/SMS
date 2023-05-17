@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net45</TargetFrameworks>
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Utilities" Version="0.0.0.8" />
+    <PackageReference Include="EasyMicroservices.Utilities" Version="0.0.0.9" />
   </ItemGroup>
 
 </Project>

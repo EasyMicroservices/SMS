@@ -4,7 +4,6 @@ using EasyMicroservices.SMS.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyMicroservices.SMS.Providers
@@ -19,9 +18,13 @@ namespace EasyMicroservices.SMS.Providers
         /// </summary>
         /// <param name="singleTextMessageRequest"></param>
         /// <returns></returns>
-        public virtual async Task<SingleTextMessageResponse> SendAsync(SingleTextMessageRequest singleTextMessageRequest)
+        public virtual Task<SingleTextMessageResponse> SendSingleAsync(SingleTextMessageRequest singleTextMessageRequest)
         {
-            return (SingleTextMessageResponse)await SendAsync((MultipleTextMessageRequest)singleTextMessageRequest);
+            return ExceptionHelper.ExceptionHandler(async () =>
+            {
+                var result = await SendMultipleAsync((MultipleTextMessageRequest)singleTextMessageRequest);
+                return result.ToSingleTextMessageResponse(result.Ids?.FirstOrDefault());
+            }, (ex) => ((MessageResponse)ex).ToSingleTextMessageResponse());
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace EasyMicroservices.SMS.Providers
         /// </summary>
         /// <param name="multipleTextMessageRequest"></param>
         /// <returns></returns>
-        public Task<MultipleTextMessageResponse> SendAsync(MultipleTextMessageRequest multipleTextMessageRequest)
+        public Task<MultipleTextMessageResponse> SendMultipleAsync(MultipleTextMessageRequest multipleTextMessageRequest)
         {
             return ExceptionHelper.ExceptionHandler(async () =>
             {
