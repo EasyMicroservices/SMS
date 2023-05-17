@@ -23,19 +23,15 @@ namespace EasyMicroservices.SMS.Kavenegar.Providers
 
         protected override async Task<List<string>> ApiSendAsync(MultipleTextMessageRequest multipleTextMessageRequest)
         {
-            KavenegarApi kavenegar = new KavenegarApi(_apiKey);
             if (_apiAddress.HasValue())
-                kavenegar.ApiKey = _apiAddress;
+                KavenegarApi.BaseUrl = _apiAddress;
+            KavenegarApi kavenegar = new KavenegarApi(_apiKey);
 
-#if (NET45 || NET452)
-            var result = kavenegar.Send(multipleTextMessageRequest.Senders.FirstOrEmptyException(),
-                multipleTextMessageRequest.ToNumbers,
-                multipleTextMessageRequest.Text);
-#else
+
             var result = await kavenegar.Send(multipleTextMessageRequest.Senders.FirstOrEmptyException(),
                 multipleTextMessageRequest.ToNumbers,
                 multipleTextMessageRequest.Text);
-#endif
+      
             if (result.First().Status != 5)
             {
                 throw new System.Exception($"Send sms error : {result.First().Message}");
