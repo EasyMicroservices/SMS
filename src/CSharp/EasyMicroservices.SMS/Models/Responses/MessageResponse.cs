@@ -59,5 +59,19 @@ namespace EasyMicroservices.SMS.Models.Responses
                 Ids = ids
             };
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public SingleTextMessageResponse ToSingleTextMessageResponse(string id = default)
+        {
+            return new SingleTextMessageResponse()
+            {
+                Error = Error,
+                IsSuccess = IsSuccess,
+                Id = id
+            };
+        }
     }
 }
