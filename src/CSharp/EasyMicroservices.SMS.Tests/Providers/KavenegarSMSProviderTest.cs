@@ -18,7 +18,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
         public override async Task<SingleTextMessageResponse> SendSingleAsync(string message)
         {
             string id = "452453";
-            await SMSVirtualTestManager.AppendService(id);
+            await SMSVirtualTestManager.AppendService(KavenegarPort, id);
             var smsResult = await base.SendSingleAsync(message);
             Assert.Equal(id, smsResult.Id);
             return smsResult;
@@ -27,7 +27,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
         public override async Task<MultipleTextMessageResponse> SendMultipleAsync(string message)
         {
             string[] ids = new string[] { "452453", "452454" };
-            await SMSVirtualTestManager.AppendService(ids);
+            await SMSVirtualTestManager.AppendService(KavenegarPort, ids);
             var smsResult = await base.SendMultipleAsync(message);
             Assert.True(smsResult.Ids.SequenceEqual(ids));
             return smsResult;

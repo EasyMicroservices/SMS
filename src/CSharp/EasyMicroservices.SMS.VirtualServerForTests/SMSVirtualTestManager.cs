@@ -31,9 +31,9 @@ namespace EasyMicroservices.SMS.VirtualServerForTests
         }
 
 
-        public async Task AppendService(params string[] ids)
+        public async Task AppendService(int port,params string[] ids)
         {
-            await AppendService(CurrentPortNumber, $@"POST *RequestSkipBody* HTTP/1.1
+            await AppendService(port, $@"POST *RequestSkipBody* HTTP/1.1
 *RequestSkipBody*Content-Length: *RequestSkipBody*
 
 sender=*RequestSkipBody*&receptor={(ids.Length > 1 ? "09391111111%2C09391111112%2C09391111113" : "09391111111")}&message=*RequestSkipBody*&type=*RequestSkipBody*&date=*RequestSkipBody*"
