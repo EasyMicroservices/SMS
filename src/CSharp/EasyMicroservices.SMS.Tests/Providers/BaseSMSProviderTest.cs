@@ -69,7 +69,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
         [InlineData("Hello Madi")]
         public virtual async Task<MultipleTextMessageResponse> SendMultipleAsync(string message)
         {
-            var smsResult = await SMSProvider.SendMultipleAsync(new  MultipleTextMessageRequest()
+            var smsResult = await SMSProvider.SendMultipleAsync(new MultipleTextMessageRequest()
             {
                 Senders = new List<string>()
                 {

@@ -45,7 +45,7 @@ namespace EasyMicroservices.SMS.Kavenegar.Providers
             var result = await kavenegar.Send(multipleTextMessageRequest.Senders.FirstOrEmptyException(),
                 multipleTextMessageRequest.ToNumbers,
                 multipleTextMessageRequest.Text);
-      
+
             if (result.First().Status != 5)
             {
                 throw new System.Exception($"Send sms error : {result.First().Message}");
