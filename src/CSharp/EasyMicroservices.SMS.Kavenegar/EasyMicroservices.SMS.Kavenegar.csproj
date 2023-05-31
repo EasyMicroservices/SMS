@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net45</TargetFrameworks>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>EasyMicroservices</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.0.2</Version>
+    <Description>kavenegar sms message.</Description>
+    <Copyright>EasyMicroservices@gmail.com</Copyright>
+    <PackageTags>sms,message,kavenegar</PackageTags>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/SMS</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.SMS.Kavenegar.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
