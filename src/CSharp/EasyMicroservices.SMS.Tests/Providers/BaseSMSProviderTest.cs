@@ -2,6 +2,7 @@
 using EasyMicroservices.SMS.Interfaces;
 using EasyMicroservices.SMS.Models.Requests;
 using EasyMicroservices.SMS.Models.Responses;
+using EasyMicroservices.SMS.VirtualServerForTests;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
         }
         ISMSProvider SMSProvider { get; set; }
 
-        static SMSVirtualTestManager SMSVirtualTestManager { get; set; } = new SMSVirtualTestManager();
+        protected static SMSVirtualTestManager SMSVirtualTestManager { get; set; } = new SMSVirtualTestManager();
         Task OnInitialize(int portNumber)
         {
             return SMSVirtualTestManager.OnInitialize(portNumber);

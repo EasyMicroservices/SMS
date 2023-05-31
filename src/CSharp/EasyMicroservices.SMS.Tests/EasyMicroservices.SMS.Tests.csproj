@@ -14,15 +14,10 @@
   </Choose>
   
   <PropertyGroup>
-    <IsPackable>true</IsPackable>
+    <IsPackable>false</IsPackable>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.1</Version>
-    <Description>kavenegar sms message for tests.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>sms,message,kavenegar</PackageTags>
-    <PackageProjectUrl>https://github.com/EasyMicroservices/SMS</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -38,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.SMS.Kavenegar\EasyMicroservices.SMS.Kavenegar.csproj" />
+    <ProjectReference Include="..\EasyMicroservices.SMS.VirtualServerForTests\EasyMicroservices.SMS.VirtualServerForTests.csproj" />
   </ItemGroup>
 
 </Project>
