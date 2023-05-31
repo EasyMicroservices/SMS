@@ -1,9 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Choose>
+    <When Condition="$(SolutionFileName.Contains('Net7'))">
+      <PropertyGroup>
+        <TargetFrameworks>net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>netcoreapp3.1;net6.0;net5.0;net48;net452;net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net6.0;net5.0;net48;net452;net7.0</TargetFrameworks>
-    <IsPackable>false</IsPackable>
+    <IsPackable>true</IsPackable>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>EasyMicroservices</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.0.1</Version>
+    <Description>kavenegar sms message for tests.</Description>
+    <Copyright>EasyMicroservices@gmail.com</Copyright>
+    <PackageTags>sms,message,kavenegar</PackageTags>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/SMS</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

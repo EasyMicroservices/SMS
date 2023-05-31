@@ -9,11 +9,19 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.SMS.Kavenegar.Providers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class KavenegarSMSProvider : BaseSMSProvider
     {
         private readonly string _apiKey;
         private readonly string _apiAddress;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apiKey"></param>
+        /// <param name="apiAddress"></param>
         public KavenegarSMSProvider(string apiKey, string apiAddress = default)
         {
             apiKey.ThrowIfNull(nameof(apiKey));
@@ -21,6 +29,12 @@ namespace EasyMicroservices.SMS.Kavenegar.Providers
             _apiAddress = apiAddress;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="multipleTextMessageRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception"></exception>
         protected override async Task<List<string>> ApiSendAsync(MultipleTextMessageRequest multipleTextMessageRequest)
         {
             if (_apiAddress.HasValue())
