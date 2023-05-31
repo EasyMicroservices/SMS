@@ -1,6 +1,4 @@
 ﻿using EasyMicroservices.Laboratory.Constants;
-using EasyMicroservices.Laboratory.Engine;
-using EasyMicroservices.Laboratory.Engine.Net.Http;
 using EasyMicroservices.SMS.Interfaces;
 using EasyMicroservices.SMS.Models.Requests;
 using EasyMicroservices.SMS.Models.Responses;
@@ -18,23 +16,16 @@ namespace EasyMicroservices.SMS.Tests.Providers
             SMSProvider = sMSProvider;
         }
         ISMSProvider SMSProvider { get; set; }
-        static HashSet<int> InitializedPorts = new HashSet<int>();
-        static readonly ResourceManager ResourceManager = new ResourceManager();
-        int CurrentPortNumber { get; set; }
-        async Task OnInitialize(int portNumber)
+
+        static SMSVirtualTestManager SMSVirtualTestManager { get; set; } = new SMSVirtualTestManager();
+        Task OnInitialize(int portNumber)
         {
-            CurrentPortNumber = portNumber;
-            if (InitializedPorts.Contains(portNumber))
-                return;
-            InitializedPorts.Add(portNumber);
-            HttpHandler httpHandler = new HttpHandler(ResourceManager);
-            await httpHandler.Start(portNumber);
+            return SMSVirtualTestManager.OnInitialize(portNumber);
         }
 
         protected Task AppendService(int port, string request, string body)
         {
-            ResourceManager.Append(request, body);
-            return OnInitialize(port);
+            return SMSVirtualTestManager.AppendService(port, request, body);
         }
 
         protected async Task<string> GetLastResponse(int port)
@@ -60,7 +51,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
                 ToNumber = "09391111111"
             });
 
-            Assert.True(smsResult.IsSuccess, await GetLastResponse(CurrentPortNumber));
+            Assert.True(smsResult.IsSuccess, await GetLastResponse(SMSVirtualTestManager.CurrentPortNumber));
             return smsResult;
         }
         [Theory]
@@ -84,7 +75,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
                 }
             });
 
-            Assert.True(smsResult.IsSuccess, await GetLastResponse(CurrentPortNumber));
+            Assert.True(smsResult.IsSuccess, await GetLastResponse(SMSVirtualTestManager.CurrentPortNumber));
             return smsResult;
         }
     }
