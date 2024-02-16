@@ -8,7 +8,7 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1;net6.0;net5.0;net48;net452;net7.0</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.1;net48;net452;net6.0;net7.0</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -23,8 +23,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Laboratory" Version="0.0.0.7" />
-    <PackageReference Include="EasyMicroservices.Tests" Version="0.0.0.3" />
+    <PackageReference Include="EasyMicroservices.Laboratory" Version="0.0.0.16" />
+    <PackageReference Include="EasyMicroservices.Tests" Version="0.0.0.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
