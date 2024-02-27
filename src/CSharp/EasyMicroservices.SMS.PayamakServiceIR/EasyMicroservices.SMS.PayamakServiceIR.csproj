@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+
   <Choose>
     <When Condition="$(SolutionFileName.Contains('Net7'))">
       <PropertyGroup>
@@ -12,25 +12,25 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-      
+
   <PropertyGroup>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <IsPackable>true</IsPackable>
     <Version>0.0.0.3</Version>
-    <Description>kavenegar sms message.</Description>
+    <Description>payamak service niazpardaz.ir sms message.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>sms,message,kavenegar</PackageTags>
+    <PackageTags>sms,message,niazpardaz.ir</PackageTags>
     <PackageProjectUrl>https://github.com/EasyMicroservices/SMS</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.SMS.Kavenegar.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.KavenegarDotNetCore">
-      <Version>1.0.7</Version>
-    </PackageReference>
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
   </ItemGroup>
 
   <ItemGroup>
