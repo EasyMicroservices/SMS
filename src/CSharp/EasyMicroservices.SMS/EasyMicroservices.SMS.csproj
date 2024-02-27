@@ -28,6 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EasyMicroservices.ServiceContracts" Version="0.0.0.21" />
     <PackageReference Include="EasyMicroservices.Utilities" Version="0.0.0.13" />
   </ItemGroup>
 

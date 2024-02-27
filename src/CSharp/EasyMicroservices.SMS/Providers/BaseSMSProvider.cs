@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.SMS.Interfaces;
+﻿using EasyMicroservices.ServiceContracts;
+using EasyMicroservices.SMS.Interfaces;
 using EasyMicroservices.SMS.Models.Requests;
 using EasyMicroservices.SMS.Models.Responses;
 using System;
@@ -18,13 +19,12 @@ namespace EasyMicroservices.SMS.Providers
         /// </summary>
         /// <param name="singleTextMessageRequest"></param>
         /// <returns></returns>
-        public virtual Task<SingleTextMessageResponse> SendSingleAsync(SingleTextMessageRequest singleTextMessageRequest)
+        public virtual async Task<MessageContract<SingleTextMessageResponse>> SendSingleAsync(SingleTextMessageRequest singleTextMessageRequest)
         {
-            return ExceptionHelper.ExceptionHandler(async () =>
-            {
-                var result = await SendMultipleAsync((MultipleTextMessageRequest)singleTextMessageRequest);
-                return result.ToSingleTextMessageResponse(result.Ids?.FirstOrDefault());
-            }, (ex) => ((MessageResponse)ex).ToSingleTextMessageResponse());
+            var result = await SendMultipleAsync((MultipleTextMessageRequest)singleTextMessageRequest);
+            if (!result)
+                return result.ToContract<SingleTextMessageResponse>();
+            return (MessageContract<SingleTextMessageResponse>)(SingleTextMessageResponse)result.Result;
         }
 
         /// <summary>
@@ -32,13 +32,16 @@ namespace EasyMicroservices.SMS.Providers
         /// </summary>
         /// <param name="multipleTextMessageRequest"></param>
         /// <returns></returns>
-        public Task<MultipleTextMessageResponse> SendMultipleAsync(MultipleTextMessageRequest multipleTextMessageRequest)
+        public Task<MessageContract<MultipleTextMessageResponse>> SendMultipleAsync(MultipleTextMessageRequest multipleTextMessageRequest)
         {
             return ExceptionHelper.ExceptionHandler(async () =>
             {
                 multipleTextMessageRequest.ThrowIfNull(nameof(multipleTextMessageRequest));
-                return ((MessageResponse)true).ToMultipleTextMessageResponse(await ApiSendAsync(multipleTextMessageRequest));
-            }, (ex) => ((MessageResponse)ex).ToMultipleTextMessageResponse());
+                return (MessageContract<MultipleTextMessageResponse>)new MultipleTextMessageResponse()
+                {
+                    Ids = await ApiSendAsync(multipleTextMessageRequest)
+                };
+            }, (ex) => ex.ToContract<MultipleTextMessageResponse>());
         }
 
         /// <summary>
