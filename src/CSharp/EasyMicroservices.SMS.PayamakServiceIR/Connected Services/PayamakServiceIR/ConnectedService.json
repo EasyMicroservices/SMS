@@ -1,0 +1,16 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://payamak-service.ir/SendService.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, PayamakServiceIR"
+    ],
+    "targetFramework": "netcoreapp2.0",
+    "typeReuseMode": "All"
+  }
+}

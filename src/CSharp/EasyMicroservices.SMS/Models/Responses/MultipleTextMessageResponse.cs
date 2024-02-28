@@ -7,7 +7,7 @@ namespace EasyMicroservices.SMS.Models.Responses
     /// <summary>
     /// 
     /// </summary>
-    public class MultipleTextMessageResponse : MessageResponse
+    public class MultipleTextMessageResponse
     {
         /// <summary>
         /// 
@@ -23,7 +23,6 @@ namespace EasyMicroservices.SMS.Models.Responses
             multipleTextMessageResponse.ThrowIfNull(nameof(multipleTextMessageResponse));
             return new SingleTextMessageResponse()
             {
-                IsSuccess = multipleTextMessageResponse.IsSuccess,
                 Id = multipleTextMessageResponse.Ids.First()
             };
         }

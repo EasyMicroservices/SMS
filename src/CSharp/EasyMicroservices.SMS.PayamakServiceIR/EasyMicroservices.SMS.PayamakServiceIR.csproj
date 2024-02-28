@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+
   <Choose>
     <When Condition="$(SolutionFileName.Contains('Net7'))">
       <PropertyGroup>
@@ -12,24 +12,29 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  
+
   <PropertyGroup>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.2</Version>
-    <Description>sms message.</Description>
+    <IsPackable>true</IsPackable>
+    <Version>0.0.0.3</Version>
+    <Description>payamak service niazpardaz.ir sms message.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
-    <PackageTags>sms,message</PackageTags>
+    <PackageTags>sms,message,niazpardaz.ir</PackageTags>
     <PackageProjectUrl>https://github.com/EasyMicroservices/SMS</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>.\bin\$(Configuration)\$(TargetFramework)\EasyMicroservices.SMS.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.ServiceContracts" Version="0.0.0.21" />
-    <PackageReference Include="EasyMicroservices.Utilities" Version="0.0.0.13" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.SMS\EasyMicroservices.SMS.csproj" />
   </ItemGroup>
 
 </Project>
