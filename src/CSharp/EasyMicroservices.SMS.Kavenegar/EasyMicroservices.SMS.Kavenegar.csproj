@@ -17,7 +17,7 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <IsPackable>true</IsPackable>
-    <Version>0.0.0.3</Version>
+    <Version>0.0.0.4</Version>
     <Description>kavenegar sms message.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>sms,message,kavenegar</PackageTags>
