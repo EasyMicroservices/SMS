@@ -54,7 +54,7 @@ public class PayamakServiceIRProvider : BaseSMSProvider
         }
         else
         {
-            throw new System.Exception($"Send sms error : {string.Join(",", result.status.Select(x => x.ToString()))}");
+            throw new System.Exception($"Send sms error : {string.Join(",", result?.status?.Select(x => x.ToString()))}");
         }
     }
 }
