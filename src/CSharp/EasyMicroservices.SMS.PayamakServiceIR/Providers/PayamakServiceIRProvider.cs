@@ -41,9 +41,9 @@ public class PayamakServiceIRProvider : BaseSMSProvider
             userName = _userName,
             password = _password,
             fromNumber = multipleTextMessageRequest.Senders.First(),
-            toNumbers = multipleTextMessageRequest.ToNumbers.ToArray(),
-
+            toNumbers = multipleTextMessageRequest.ToNumbers?.ToArray(),
         });
+
         if (result.SendSMSResult == 0)
         {
             return new List<string>()

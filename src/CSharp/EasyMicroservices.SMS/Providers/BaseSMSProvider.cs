@@ -24,7 +24,7 @@ namespace EasyMicroservices.SMS.Providers
             var result = await SendMultipleAsync((MultipleTextMessageRequest)singleTextMessageRequest);
             if (!result)
                 return result.ToContract<SingleTextMessageResponse>();
-            return (MessageContract<SingleTextMessageResponse>)(SingleTextMessageResponse)result.Result;
+            return (SingleTextMessageResponse)result.Result;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace EasyMicroservices.SMS.Providers
                 {
                     Ids = await ApiSendAsync(multipleTextMessageRequest)
                 };
-            }, (ex) => ex.ToContract<MultipleTextMessageResponse>());
+            }, (ex) => ex);
         }
 
         /// <summary>

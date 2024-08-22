@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace EasyMicroservices.SMS.Models.Requests
 {
@@ -23,7 +24,7 @@ namespace EasyMicroservices.SMS.Models.Requests
             {
                 Senders = singleTextMessage.Senders,
                 Text = singleTextMessage.Text,
-                ToNumbers = new List<string>() { singleTextMessage.ToNumber }
+                ToNumbers = singleTextMessage.ToNumber.IsNullOrEmpty() ? null : new List<string>() { singleTextMessage.ToNumber }
             };
         }
     }
