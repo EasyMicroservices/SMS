@@ -16,7 +16,7 @@ namespace EasyMicroservices.SMS.Tests.Providers
         {
             SMSProvider = sMSProvider;
         }
-        ISMSProvider SMSProvider { get; set; }
+        protected ISMSProvider SMSProvider { get; set; }
 
         protected static SMSVirtualTestManager SMSVirtualTestManager { get; set; } = new SMSVirtualTestManager();
         Task OnInitialize(int portNumber)

@@ -8,7 +8,7 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1;net48;net452;net6.0;net7.0</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.1;net48;net452;net6.0;net8.0</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.SMS.Kavenegar\EasyMicroservices.SMS.Kavenegar.csproj" />
+    <ProjectReference Include="..\EasyMicroservices.SMS.PayamakServiceIR\EasyMicroservices.SMS.PayamakServiceIR.csproj" />
     <ProjectReference Include="..\EasyMicroservices.SMS.VirtualServerForTests\EasyMicroservices.SMS.VirtualServerForTests.csproj" />
   </ItemGroup>
 

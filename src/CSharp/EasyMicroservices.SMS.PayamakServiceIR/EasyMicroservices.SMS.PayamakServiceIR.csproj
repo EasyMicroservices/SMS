@@ -17,7 +17,7 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <IsPackable>true</IsPackable>
-    <Version>0.0.0.6</Version>
+    <Version>0.0.0.7</Version>
     <Description>payamak service niazpardaz.ir sms message.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>sms,message,niazpardaz.ir</PackageTags>
@@ -25,22 +25,17 @@
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  
-  <Choose>
-    <When Condition="'$(TargetFramework)' == 'net8.0'">
-      <ItemGroup>
-        <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
 
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.SMS\EasyMicroservices.SMS.csproj" />
   </ItemGroup>
-
+  
+  <Choose>
+    <When Condition="'$(TargetFramework)' != 'net8.0'">
+      <ItemGroup>
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+      </ItemGroup>
+    </When>
+  </Choose>
+  
 </Project>
