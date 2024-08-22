@@ -8,7 +8,7 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net45</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net45;net8.0</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -17,22 +17,27 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <IsPackable>true</IsPackable>
-    <Version>0.0.0.5</Version>
+    <Version>0.0.0.6</Version>
     <Description>payamak service niazpardaz.ir sms message.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>sms,message,niazpardaz.ir</PackageTags>
     <PackageProjectUrl>https://github.com/EasyMicroservices/SMS</PackageProjectUrl>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
-    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
-    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
-  </ItemGroup>
+  
+  <Choose>
+    <When Condition="'$(TargetFramework)' == 'net8.0'">
+      <ItemGroup>
+        <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.SMS\EasyMicroservices.SMS.csproj" />
